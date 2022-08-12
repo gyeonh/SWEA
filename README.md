@@ -1,2 +1,2 @@
 # SWEA
-SWEA_algorithm_study
+SWEA_Code
