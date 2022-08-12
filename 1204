@@ -1,0 +1,11 @@
+T = int(input())
+for i in range(1, T+1):
+    N = int(input())
+    scores = list(map(int, input().split()))
+    scores_dict = {sc:n for sc,n in zip(sorted(list(set(scores))), [0]*len(set(scores)))}    # 딕셔너리 키값이 정렬되도록
+
+    for score in scores:
+        scores_dict[score] += 1
+
+    mode = [key for key, val in scores_dict.items() if max(scores_dict.values())==val][-1]
+    print(f'#{N} {mode}')
