@@ -1,0 +1,16 @@
+for j in range(1,11):
+    T = int(input())
+    buildings = list(map(int, input().split()))
+
+    def check(b1, b2, b3, b4, b5):
+        cnt = 0
+        if max(b1, b2, b3, b4, b5) == b3:
+            sec = max(b1, b2, b4, b5)
+            cnt += (b3 - sec)
+        return cnt
+
+    total = 0 
+    for i in range(2, len(buildings)-2):
+        total += check(buildings[i-2], buildings[i-1], buildings[i], buildings[i+1], buildings[i+2])
+        
+    print(f'#{j} {total}')
