@@ -1,0 +1,37 @@
+def my_max(args):
+    maxV = args[0]
+    for i in range(1, len(args)):
+        if maxV < args[i]:
+            maxV = args[i]
+    return maxV
+    
+for _ in range(1, 11):
+    i = int(input())
+    arr = []
+    for j in range(100):
+        arr.append(list(map(int, input().split())))
+        
+    result = []
+    diag1 = 0
+    diag2 = 0
+    
+    for p in range(100):
+        row = 0
+        col = 0
+        for q in range(100):
+            # 행/열 합 추가
+            row += arr[p][q]
+            col += arr[q][p]
+            
+            # 대각선 합 추가1
+            if p == q:
+                diag1 += arr[p][q]
+        result.append(row)
+        result.append(col)
+        
+        # 대각선 합 추가 2
+        diag2 += arr[p][99-p]
+    result.append(diag1)
+    result.append(diag2)
+    
+    print(f'#{i} {my_max(result)}')
