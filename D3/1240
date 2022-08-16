@@ -1,0 +1,52 @@
+T = int(input())
+for t in range(1, T+1):
+    N, M = map(int, input().split())
+    
+    code = {0:'3211', 1:'2221', 2:'2122', 3:'1411', 4:'1132', 5:'1231', 6:'1114', 7:'1312', 8:'1213', 9:'3112'}
+    new_code = {v:k for k,v in code.items()}
+
+    input_num = ''
+    for n in range(N):
+        input_num += input()
+    rev_idx = (''.join(reversed(input_num))).index('1')
+
+    # 필요부분 뽑아오기
+    num = input_num[rev_idx*(-1)-56 : rev_idx*(-1)]     # 01110110110001011101101100010110001000110100100110111011
+
+    num_cnt = ''  # 숫자 개수 나열한 문자열
+                  # 13121231131212311231321121221312
+    cnt = 0
+    # 다음것과 같지 않을 때까지 count
+    for i in range(len(num)-1):
+        cnt += 1
+        if num[i] != num[i+1]:
+            num_cnt += str(cnt)
+            cnt=0
+        if i == len(num)-2:              # 마지막 순회일때
+            if num[i] == num[i+1]:       # 마지막과 마지막 전이 같으면 cnt+1을 추가
+                num_cnt += str(cnt+1)
+            else:                        # 마지막과 마지막 전이 같지 않으면 그냥 1 추가
+                num_cnt += '1'
+    # print(num_cnt)
+    # print(new_code)
+
+    val_code = ''   # 검증코드
+    for i in range(0, len(num_cnt), 4):
+        key = num_cnt[i:i+4]
+        val_code += str(new_code[key])
+
+    # 검증코드가 올바른 암호코드인지 확인
+    odd_sum = 0
+    even_sum = 0    # 검증코드 합까지 포함되어 있음
+    for i in range(len(val_code)):
+        if i%2:
+            even_sum += int(val_code[i])
+        else:
+            odd_sum += int(val_code[i])
+
+    if ((odd_sum*3) + even_sum) % 10 == 0:
+        result = sum(list(map(int, val_code)))
+    else:
+        result = 0
+    
+    print(f'#{t} {result}')
