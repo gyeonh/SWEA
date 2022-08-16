@@ -1,0 +1,16 @@
+import numpy as np
+
+for _ in range(10):
+    i = int(input())
+    arr = []
+    for j in range(5):
+        arr.append(list(map(int, input().split())))
+    result = []
+    # 행 합 추가
+    result += list(np.sum(arr, axis=1))
+    # 열 합 추가
+    result += list(np.sum(arr, axis=0))
+    # 대각선 합 추가 => np.trace => np.int64
+    result.append(int(np.trace(arr)))
+    
+    print(f'#{i} {max(result)}')
