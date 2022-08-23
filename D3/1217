@@ -1,0 +1,11 @@
+def power_num(n, c):
+    if c == 0:
+        return 1
+    else:
+        return n * power_num(n, c-1)
+    
+for _ in range(10):
+    T = int(input())
+    N, M = map(int, input().split())
+    result = power_num(N, M)
+    print(f'#{T} {result}')
