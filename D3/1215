@@ -1,0 +1,23 @@
+for tc in range(10):
+    N = int(input())    # 찾아야하는 회문 길이
+    arr = []
+    arr_t = [[0]*8 for _ in range(8)]
+    cnt = 0
+    for i in range(8):
+        tmp = list(input())
+        arr.append(tmp)
+        for j in range(8):  # 전치행렬 만들기
+            arr_t[j] = tmp[j]
+    
+    for j in range(8):
+        for i in range(8-N+1):
+            # 가로줄 확인
+            row_word = arr[j][i:i+N]
+            if row_word == row_word[::-1]:  # 회문 검사
+                cnt += 1
+            # 세로줄 확인
+            col_word = arr_t[j][i:i+N]
+            if col_word == col_word[::-1]:  # 회문 검사
+                cnt += 1
+
+    print(f'#{tc+1} {cnt}')
