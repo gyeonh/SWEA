@@ -1,6 +1,6 @@
 T = int(input())
 for tc in range(T):
-    N = int(input()) # str
+    N = int(input())
     # 변수 초기화
     check = set()
     k = 0
