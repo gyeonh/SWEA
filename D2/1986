@@ -1,0 +1,12 @@
+T = int(input())
+for tc in range(T):
+    N = int(input())
+    n = 0
+    total = 0
+    while n < N:
+        n += 1
+        if n%2==0:
+            total += n * (-1)
+        else:
+            total += n
+    print(f'#{tc+1} {total}')
