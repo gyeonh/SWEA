@@ -1,0 +1,15 @@
+T = int(input())
+for tc in range(T):
+    N = int(input()) # str
+    # 변수 초기화
+    check = set()
+    k = 0
+    n = str(N)
+    while len(check) <= 9:
+        k += 1
+        arr_N = list(n) # str in list
+        for i in range(len(arr_N)):
+            check.add(arr_N[i])
+        n = N * k
+        n = str(n)
+    print(f'#{tc+1} {N * (k-1)}')
