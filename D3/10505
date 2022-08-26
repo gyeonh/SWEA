@@ -1,0 +1,16 @@
+T = int(input())
+def my_sum(args):
+    total = 0
+    for i in range(len(args)):
+        total += args[i]
+    return total
+
+for tc in range(1, T+1):
+    N = int(input())
+    income = list(map(int, input().split()))
+    cnt = 0
+    med = my_sum(income) / N
+    for j in range(N):
+        if income[j] <= med:
+            cnt += 1
+    print(f'#{tc} {cnt}')
