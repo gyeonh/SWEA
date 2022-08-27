@@ -1,0 +1,19 @@
+# 1 감소 했을 때 0보다 작아지거나 0인 경우, 0으로 유지하고 프로그램 종료
+for _ in range(10):
+    tc = int(input())
+    arr = list(map(int, input().split()))
+    print(f'#{tc}')
+    start = arr[0]
+    
+    while arr[-1] > 0:
+        for i in range(1, 6):
+            start = arr[0]
+            # 맨 앞 원소 제거
+            arr.remove(start)
+            # 맨 앞 원소 - i 한 것을 맨 뒤에 append
+            if start-i <= 0:
+                arr.append(0)
+                break
+            arr.append(start-i)
+
+    print(*arr)
