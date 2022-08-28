@@ -1,0 +1,27 @@
+def matching(data): # data는 2차원 배열
+    cnt = 0
+    for i in data:  # 한 열씩 접근
+        stack = []
+        for j in i:
+            if j == 1: # N극
+                if stack:
+                    stack.pop()
+                stack.append(j)
+            elif j == 2: # S극
+                if stack:   # stack이 비어있지 않으면
+                    stack.pop()  # 쌍으로 묶고
+                    cnt += 1     # 결과 개수에 1 추가
+    return cnt
+
+
+# 1 : N극(아래로 당겨짐), 2 : S극(위로 당겨짐)
+for tc in range(1, 11):
+    edge = int(input())
+    input_data = [list(map(int, input().split())) for __ in range(edge)]
+    arr = [[0] * edge for _ in range(edge)]
+    for r in range(edge):
+        for c in range(edge):
+            arr[c][r] = input_data[r][c]  # 열 단위로 접근하기 위해 전치행렬로 만들어줌
+
+    result = matching(arr)
+    print(f'#{tc} {result}')
