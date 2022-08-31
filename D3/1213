@@ -1,0 +1,13 @@
+for _ in range(10):
+    tc = int(input())
+    pattern = input()
+    text = input()
+
+    len_p = len(pattern)
+    len_t = len(text)
+
+    cnt = 0
+    for i in range(len_t - len_p + 1):
+        if text[i:i+len_p] == pattern:
+            cnt += 1
+    print(f'#{tc} {cnt}')
