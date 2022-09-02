@@ -1,0 +1,16 @@
+T = int(input())
+# 오른쪽의 원소 중, 더 작은 원소의 개수 구하기
+for t in range(1, T+1):
+    N = int(input())
+    num = list(map(int, input().split()))
+    
+    max_diff = 0
+    for i in range(N):
+        diff = 0
+        for j in range(i+1, N):
+            if num[i] > num[j]:   # 현재보다 다음이 작을 경우
+                diff += 1       # 낙차값에 더하기(개수+1)
+                if diff > max_diff:    # 가장 큰 낙차 구하기
+                    max_diff = diff
+                    
+    print(f'#{t} {max_diff}')
