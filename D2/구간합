@@ -1,0 +1,20 @@
+T = int(input())
+for tc in range(T):
+    N, M = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    for i in range(N-M+1):
+        tmp = 0 # 계산 담아둘 변수
+        for j in range(i, i+M):
+            tmp += a[j]
+
+        if i == 0:  # 초기값 설정
+            maxSum = tmp
+            minSum = tmp
+            
+        if tmp > maxSum:
+            maxSum = tmp
+        elif tmp < minSum:
+            minSum = tmp
+                
+    print(f'#{tc+1} {maxSum-minSum}')
