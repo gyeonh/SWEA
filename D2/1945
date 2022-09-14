@@ -10,6 +10,7 @@ for i in range(1, T+1):
         while N % i == 0:   # 각 수로 안나누어질 때까지 나눔
             cnt += 1        # 몇 번 나누어졌는지 횟수 세기
             N /= i
+            
         result.append(cnt)
         cnt = 0     # 초기화 필요
 
