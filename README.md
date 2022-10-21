@@ -1,3 +1,2 @@
 # SWEA
-SWEA_Code<br>
-Python version
+SW Expert Academy_Samsung
